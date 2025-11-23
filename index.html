@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>砲台シューティングゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- スタート画面 -->
+    <div id="startScreen" class="screen">
+        <div class="menu-container">
+            <h1>🎮 砲台シューティング</h1>
+            <p>60秒間でできるだけ多くの敵を撃破しよう！</p>
+            <button id="startButton" class="game-button">ゲームスタート</button>
+            <button id="practiceButton" class="game-button practice-button">練習モード</button>
+            <div class="controls-info">
+                <h3>操作方法</h3>
+                <p>⌨️ W/↑: 砲身を上げる</p>
+                <p>⌨️ S/↓: 砲身を下げる</p>
+                <p>⌨️ A/←: 砲台を左に旋回</p>
+                <p>⌨️ D/→: 砲台を右に旋回</p>
+                <p>⌨️ スペース: 発射</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ゲーム画面 -->
+    <div id="gameScreen" class="screen" style="display: none;">
+        <!-- HUD -->
+        <div id="hud">
+            <div class="hud-item">
+                <span class="hud-label">スコア:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">残り時間:</span>
+                <span id="wave">60</span>秒
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">撃破数:</span>
+                <span id="enemyCount">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">現在の敵:</span>
+                <span id="health">0</span>
+            </div>
+        </div>
+        
+        <!-- 退出ボタン -->
+        <button id="exitButton" class="exit-button">退出</button>
+    </div>
+
+    <!-- ゲームオーバー画面 -->
+    <div id="gameOverScreen" class="screen" style="display: none;">
+        <div class="menu-container">
+            <h1>タイムアップ！</h1>
+            <div class="result-message">
+                <p id="resultMessage">お疲れ様でした！</p>
+            </div>
+            <div class="final-score">
+                <p>最終スコア</p>
+                <h2 id="finalScore">0</h2>
+            </div>
+            <div class="stats">
+                <p>撃破数: <span id="finalWave">0</span>体</p>
+            </div>
+            <button id="restartButton" class="game-button">もう一度プレイ</button>
+            <button id="mashimashiButton" class="game-button mashimashi">敵マシマシモードで再挑戦</button>
+        </div>
+    </div>
+
+    <!-- THREE.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Cannon.js (物理エンジン) -->
+    <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+    <!-- ゲームロジック -->
+    <script src="game.js"></script>
+</body>
+</html>
